@@ -1,0 +1,32 @@
+# ---- 凭据 / 本机配置：绝不入库 ----
+*.cnf
+my.ini
+*.pem
+*.key
+.env
+.env.*
+*credential*
+*secret*
+.mylogin.cnf
+
+# ---- 本机产物 ----
+*.log
+*.err
+*.pid
+*.tmp
+*.bak
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+~$*
+
+# ---- 过程材料 ----
+# `docs/课程/` **公开**：纯知识笔记，展示"从零学起"的过程，是加分项。
+# `PROGRESS.md` **不公开**：它是内部进度记录本，里面有"AI 教练 / 用户分工"和
+# DSH 插件机制备忘，跟 DBA 作品无关，且可能让面试官误解成"不是他自己做的"。
+# 想原样全公开：把下面这行注释掉即可（已验证生效）。
+PROGRESS.md
+notes/
