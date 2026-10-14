@@ -1,0 +1,63 @@
++---------+------------------------------+--------+---------------------+
+| version | edition                      | host   | now_ts              |
++---------+------------------------------+--------+---------------------+
+| 26.7.0  | MySQL Community Server - GPL | sor-pc | 2026-10-12 00:42:56 |
++---------+------------------------------+--------+---------------------+
++----------------------------------+------+------+
+| datadir                          | port | lctn |
++----------------------------------+------+------+
+| D:\MySQL\MySQL Server 26.7\Data\ | 3306 |    1 |
++----------------------------------+------+------+
++--------+---------+--------------------+
+| engine | charset | collation          |
++--------+---------+--------------------+
+| InnoDB | utf8mb4 | utf8mb4_0900_ai_ci |
++--------+---------+--------------------+
++--------------------------------+-----------------+
+| vname                          | vval            |
++--------------------------------+-----------------+
+| innodb_buffer_pool_instances   | 1               |
+| innodb_buffer_pool_size        | 134217728       |
+| innodb_file_per_table          | ON              |
+| innodb_flush_log_at_trx_commit | 1               |
+| innodb_redo_log_capacity       | 104857600       |
+| log_bin                        | ON              |
+| log_output                     | FILE            |
+| long_query_time                | 10.000000       |
+| lower_case_table_names         | 1               |
+| max_connections                | 151             |
+| server_id                      | 1               |
+| slow_query_log                 | ON              |
+| tmp_table_size                 | 414187520       |
+| transaction_isolation          | REPEATABLE-READ |
++--------------------------------+-----------------+
++----------------------------------+--------+
+| vname                            | vval   |
++----------------------------------+--------+
+| Innodb_buffer_pool_pages_dirty   | 0      |
+| Innodb_buffer_pool_pages_free    | 7065   |
+| Innodb_buffer_pool_pages_total   | 8192   |
+| Innodb_buffer_pool_read_requests | 27312  |
+| Innodb_buffer_pool_reads         | 974    |
+| Queries                          | 87     |
+| Slow_queries                     | 0      |
+| Threads_connected                | 1      |
+| Threads_running                  | 2      |
+| Uptime                           | 337520 |
++----------------------------------+--------+
++---------------------+
+| buffer_pool_hit_pct |
++---------------------+
+|             96.4338 |
++---------------------+
++--------------------+------+---------+
+| db_name            | tbls | size_mb |
++--------------------+------+---------+
+| sakila             |   23 |     6.5 |
+| mysql              |   38 |     2.7 |
+| world              |    3 |     0.8 |
+| information_schema |   84 |     0.0 |
+| performance_schema |  117 |     0.0 |
+| sys                |  101 |     0.0 |
+| practice           |    2 |     0.0 |
++--------------------+------+---------+
