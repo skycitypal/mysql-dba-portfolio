@@ -1,6 +1,6 @@
 # MySQL root 密码重置步骤（本机专用）
 
-> 状态：**✅ 已于 2026-10-06 执行完成**（S1–S8 全部走通）
+> 状态：**已于 2026-10-06 执行完成**（S1–S8 全部走通）
 > 本文档只写步骤，不含任何密码明文。
 
 ## 目标机器事实（已实测，不用重查）
@@ -14,7 +14,7 @@
 | 端口 | 3306 |
 | datadir | `D:/MySQL/MySQL Server 26.7/Data` |
 | 版本 | 26.7.0 Community Server |
-| 选项支持 | ✅ 已用 `mysqld --verbose --help` 确认 `--skip-grant-tables`、`--skip-networking`、`--enable-named-pipe`、`--shared-memory`、`--init-file` 全部存在 |
+| 选项支持 | 已用 `mysqld --verbose --help` 确认 `--skip-grant-tables`、`--skip-networking`、`--enable-named-pipe`、`--shared-memory`、`--init-file` 全部存在 |
 
 ## 风险（动手前必须知道）
 
@@ -104,11 +104,11 @@ mysql --protocol=PIPE -u root -e "SELECT VERSION() AS ver, CURRENT_USER() AS who
 3. 最后手段（**有风险，仅当上面都失败**）→ S2 去掉 `--skip-networking` 和管道选项，
    改成只绑本机：`--skip-grant-tables --bind-address=127.0.0.1 --port=3306`，然后
    `mysql -h 127.0.0.1 -P 3306 -u root`。
-   ⚠️ 此时**本机任何程序都能免密连 root**，做完立刻进入 S6，别拖。
+   此时**本机任何程序都能免密连 root**，做完立刻进入 S6，别拖。
 
 ## S4. 关键一步：先刷新权限表，再改密码
 
-⚠️ `--skip-grant-tables` 下**不能**直接执行 `ALTER USER`，会报
+`--skip-grant-tables` 下**不能**直接执行 `ALTER USER`，会报
 `The MySQL server is running with the --skip-grant-tables option so it cannot execute this statement`。
 必须**先** `FLUSH PRIVILEGES;` 让服务把权限表读回来，**同一个会话里**接着才能做账号管理。
 
