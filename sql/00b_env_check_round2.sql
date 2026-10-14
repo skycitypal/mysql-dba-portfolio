@@ -1,40 +1,40 @@
 -- ============================================================
--- 00b_env_check_round2.sql  —  my.ini  vs  EFFECTIVE (runtime) values
--- Project: mysql-dba-portfolio        Day 1 / step D1-1 (round 2)
+-- 00b_env_check_round2.sql  —  配置文件里写的 vs 实际生效的
+--                             my.ini vs EFFECTIVE (runtime) values
+-- 项目 mysql-dba-portfolio，环境清点第二步
 --
--- WHY THIS EXISTS
---   Round 1 proved that my.ini and the running server can DISAGREE:
---   my.ini line 271 says innodb_buffer_pool_instances=8, but the runtime
---   value is 1. A parameter audit must therefore always read the RUNTIME
---   values; the config file is a request, not the truth.
---   This script dumps the effective value of every parameter my.ini sets.
+-- 为什么要写这个脚本
+--   第一轮查出 my.ini 和运行中的服务器会对不上：my.ini 第 271 行写着
+--   innodb_buffer_pool_instances=8，运行时实际是 1，错误日志里连告警都没有。
+--   所以做参数审计时，唯一可信的来源是运行时值——配置文件是"请求"，不是"事实"。
+--   这个脚本把 my.ini 里设过的每一项，实际生效值全列出来。
 --
--- Run:
+-- 怎么跑：
 --   cmd /c "mysql -h 127.0.0.1 -P 3306 -u root -p --default-character-set=utf8mb4 -t < D:\mysql-dba-portfolio\sql\00b_env_check_round2.sql"
 -- ============================================================
 
 
--- 1) effective value of every parameter that my.ini sets -----------------
+-- 1) my.ini 里设过的每一项，实际生效值是什么 / effective values ----------
 SELECT VARIABLE_NAME AS vname, VARIABLE_VALUE AS vval
 FROM performance_schema.global_variables
 WHERE VARIABLE_NAME IN (
-  -- paths / identity
+  -- 路径与身份 / paths & identity
   'datadir', 'basedir', 'port', 'server_id', 'hostname',
-  -- logging
+  -- 日志 / logging
   'log_output', 'general_log', 'general_log_file',
   'slow_query_log', 'slow_query_log_file', 'long_query_time',
   'log_queries_not_using_indexes', 'min_examined_row_limit',
   'log_error', 'log_bin', 'log_bin_basename', 'binlog_expire_logs_seconds',
-  -- sql / charset
+  -- SQL 模式与字符集 / sql & charset
   'sql_mode', 'character_set_server', 'collation_server',
   'default_storage_engine', 'lower_case_table_names',
   'transaction_isolation', 'secure_file_priv', 'max_allowed_packet',
-  -- connections / tables
+  -- 连接与表缓存 / connections & tables
   'max_connections', 'max_connect_errors', 'table_open_cache', 'open_files_limit',
-  -- temp tables
+  -- 临时表 / temp tables
   'tmp_table_size', 'max_heap_table_size', 'temptable_max_ram', 'temptable_max_mmap',
   'internal_tmp_mem_storage_engine',
-  -- per-connection buffers
+  -- 每连接缓冲区 / per-connection buffers
   'join_buffer_size', 'sort_buffer_size', 'read_buffer_size', 'read_rnd_buffer_size',
   -- MyISAM
   'key_buffer_size', 'myisam_sort_buffer_size', 'myisam_max_sort_file_size',
@@ -48,15 +48,15 @@ WHERE VARIABLE_NAME IN (
 ORDER BY VARIABLE_NAME;
 
 
--- 2) buffer-pool arithmetic check ---------------------------------------
---    pool_bytes / page_bytes must equal Innodb_buffer_pool_pages_total (8192)
+-- 2) 缓冲池算术校验 / buffer-pool arithmetic check ----------------------
+--    缓冲池字节数 ÷ 页大小，应当等于第一轮查到的页总数 8192
 SELECT @@innodb_buffer_pool_size / @@innodb_page_size AS computed_pages,
        @@innodb_buffer_pool_size / 1048576             AS pool_mib,
        @@innodb_page_size                              AS page_bytes,
        @@innodb_buffer_pool_instances                  AS pool_instances;
 
 
--- 3) slow-query log: is the threshold the only reason it is empty? -------
+-- 3) 慢日志：空了是不是只因为阈值太高 / is the threshold the only reason --
 SELECT @@slow_query_log                   AS slow_log_on,
        @@long_query_time                  AS threshold_sec,
        @@log_queries_not_using_indexes    AS log_no_index,
