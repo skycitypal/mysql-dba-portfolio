@@ -1,0 +1,14 @@
+Tables_in_eshop
+t_customer
+Field	Type	Null	Key	Default	Extra
+id	bigint	NO	PRI	NULL	auto_increment
+customer_login_name	varchar(50)	NO	UNI	NULL	
+customer_name	varchar(50)	YES		NULL	
+customer_email	varchar(128)	YES		NULL	
+status	tinyint	NO		0	
+deleted	tinyint	NO		0	
+create_time	timestamp(6)	NO		CURRENT_TIMESTAMP(6)	DEFAULT_GENERATED
+update_time	timestamp(6)	NO		CURRENT_TIMESTAMP(6)	DEFAULT_GENERATED on update CURRENT_TIMESTAMP(6)
+Table	Non_unique	Key_name	Seq_in_index	Column_name	Collation	Cardinality	Sub_part	Packed	Null	Index_type	Comment	Index_comment	Visible	Expression
+t_customer	0	PRIMARY	1	id	A	0	NULL	NULL		BTREE			YES	NULL
+t_customer	0	uk_customer_login_name	1	customer_login_name	A	0	NULL	NULL		BTREE			YES	NULL

@@ -1,3 +1,9 @@
+create database if not exists `eshop`
+	default character set utf8mb4
+	default collate utf8mb4_0900_ai_ci;
+
+use `eshop`;
+
 create table `t_customer`(
 	`id` bigint not null auto_increment comment '主键 ID',
 	`customer_login_name` varchar(50) not null comment '客户登录名',
