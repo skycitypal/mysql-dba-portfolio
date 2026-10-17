@@ -1,29 +1,29 @@
- 执行cmd /c "mysql -h 127.0.0.1 -P 3306 -u root -p --default-character-set=utf8mb4 < D:\mysql-dba-portfolio\sql\02_verify.sql"后的输出内容：
 Tables_in_eshop
 t_customer
+t_order
 t_product
-Field   Type    Null    Key     Default Extra
-id      bigint  NO      PRI     NULL    auto_increment
-customer_login_name     varchar(50)     NO      UNI     NULL
-customer_name   varchar(50)     YES             NULL
-customer_email  varchar(128)    YES             NULL
-status  tinyint NO              0
-deleted tinyint NO              0
-create_time     timestamp(6)    NO              CURRENT_TIMESTAMP(6)    DEFAULT_GENERATED
-update_time     timestamp(6)    NO              CURRENT_TIMESTAMP(6)    DEFAULT_GENERATED on update CURRENT_TIMESTAMP(6)
-Table   Non_unique      Key_name        Seq_in_index    Column_name     Collation       Cardinality     Sub_part        Packed  Null    Index_type      Comment Index_comment   Visible Expression
-t_customer      0       PRIMARY 1       id      A       0       NULL    NULL            BTREE                   YES     NULL
-t_customer      0       uk_customer_login_name  1       customer_login_name     A       0       NULL    NULL            BTREE                   YES     NULL
-Field   Type    Null    Key     Default Extra
-id      bigint  NO      PRI     NULL    auto_increment
-product_no      varchar(64)     NO      UNI     NULL
-product_name    varchar(200)    NO              NULL
-product_price   decimal(10,2)   NO              NULL
-product_stock   int unsigned    NO              0
-status  tinyint NO              0
-deleted tinyint NO              0
-create_time     timestamp(6)    NO              CURRENT_TIMESTAMP(6)    DEFAULT_GENERATED
-update_time     timestamp(6)    NO              CURRENT_TIMESTAMP(6)    DEFAULT_GENERATED on update CURRENT_TIMESTAMP(6)
-Table   Non_unique      Key_name        Seq_in_index    Column_name     Collation       Cardinality     Sub_part        Packed  Null    Index_type      Comment Index_comment   Visible Expression
-t_product       0       PRIMARY 1       id      A       0       NULL    NULL            BTREE                   YES     NULL
-t_product       0       uk_product_no   1       product_no      A       0       NULL    NULL            BTREE                   YES     NULL
+Field	Type	Null	Key	Default	Extra
+id	bigint	NO	PRI	NULL	auto_increment
+customer_login_name	varchar(50)	NO	UNI	NULL	
+customer_name	varchar(50)	YES		NULL	
+customer_email	varchar(128)	YES		NULL	
+status	tinyint	NO		0	
+deleted	tinyint	NO		0	
+create_time	timestamp(6)	NO		CURRENT_TIMESTAMP(6)	DEFAULT_GENERATED
+update_time	timestamp(6)	NO		CURRENT_TIMESTAMP(6)	DEFAULT_GENERATED on update CURRENT_TIMESTAMP(6)
+Table	Non_unique	Key_name	Seq_in_index	Column_name	Collation	Cardinality	Sub_part	Packed	Null	Index_type	Comment	Index_comment	Visible	Expression
+t_customer	0	PRIMARY	1	id	A	0	NULL	NULL		BTREE			YES	NULL
+t_customer	0	uk_customer_login_name	1	customer_login_name	A	0	NULL	NULL		BTREE			YES	NULL
+Field	Type	Null	Key	Default	Extra
+id	bigint	NO	PRI	NULL	auto_increment
+product_no	varchar(64)	NO	UNI	NULL	
+product_name	varchar(200)	NO		NULL	
+product_price	decimal(10,2)	NO		NULL	
+product_stock	int unsigned	NO		0	
+status	tinyint	NO		0	
+deleted	tinyint	NO		0	
+create_time	timestamp(6)	NO		CURRENT_TIMESTAMP(6)	DEFAULT_GENERATED
+update_time	timestamp(6)	NO		CURRENT_TIMESTAMP(6)	DEFAULT_GENERATED on update CURRENT_TIMESTAMP(6)
+Table	Non_unique	Key_name	Seq_in_index	Column_name	Collation	Cardinality	Sub_part	Packed	Null	Index_type	Comment	Index_comment	Visible	Expression
+t_product	0	PRIMARY	1	id	A	0	NULL	NULL		BTREE			YES	NULL
+t_product	0	uk_product_no	1	product_no	A	0	NULL	NULL		BTREE			YES	NULL
