@@ -47,7 +47,7 @@ create table `t_customer`(
 -- ---------------------------------------------------------------
 create table `t_product`(
 	`id` bigint not null auto_increment comment '主键ID',
-	`product_no` varchar(64) not null comment'商品编号',
+	`product_no` varchar(64) not null comment '商品编号',
 	`product_name` varchar(200) not null comment '商品名称',
 	`product_price` decimal(10,2) not null comment '商品价格',
 	`product_stock` int unsigned not null default 0 comment '商品库存',
@@ -56,5 +56,5 @@ create table `t_product`(
 	`create_time` timestamp(6) not null default current_timestamp(6) comment '创建时间',
 	`update_time` timestamp(6) not null default current_timestamp(6) on update current_timestamp(6) comment '更新时间',
 
-	primary key (`id`), unique key uk_product_no (`product_no`)
+	primary key (`id`), unique key `uk_product_no` (`product_no`)
 ) engine = innodb default charset = utf8mb4 comment = '商品表';
