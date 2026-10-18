@@ -31,3 +31,8 @@ show index from t_order;
 -- 5) 表 4：订单明细
 desc t_order_item;
 show index from t_order_item;
+
+
+-- 6) 表 5：支付流水表
+desc t_payment;
+show index from t_payment;
