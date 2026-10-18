@@ -30,3 +30,6 @@ notes/
 
 # 本机参考材料，不进仓库
 local-notes/
+
+# 造数生成物（几十 MB），只入库生成器
+sql/03_seed_data.sql

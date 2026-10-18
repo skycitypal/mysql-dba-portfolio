@@ -1,0 +1,6 @@
+id	customer_login_name	customer_name	customer_email	status	deleted	create_time	update_time
+1	daofeng	道峰	d@oyiuyi.cn	0	0	2026-10-19 02:35:38.937482	2026-10-19 02:35:38.937482
+2	yupei	玉佩	yp@oyiuyi.cn	0	0	2026-10-19 02:35:38.937482	2026-10-19 02:35:38.937482
+id	product_no	product_name	product_price	product_stock	status	deleted	create_time	update_time
+1	ck00000	大肥鱼	6.00	1	1	0	2026-10-19 02:35:38.941477	2026-10-19 02:35:38.941477
+2	ck00001	小山猪	12.00	2	1	0	2026-10-19 02:35:38.941477	2026-10-19 02:35:38.941477

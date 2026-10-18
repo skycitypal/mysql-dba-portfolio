@@ -69,7 +69,7 @@ create table `t_order`(
 	`customer_id` bigint not null comment '客户ID',
 	`order_amount` decimal(10,2) not null comment '订单总额',
 	`status` tinyint not null default 0 comment '订单状态:0-待支付,1-已支付,2-已发货,3-已完成,4-已取消',
-	`pay_time` timestamp(6) default null comment '支付时间, 未支付时为 NULL',
+	`pay_time` timestamp(6) default null comment '支付时间,未支付时为 NULL',
 	`deleted` tinyint not null default 0 comment '删除标记:0-未删除,1-已删除',
 	`create_time` timestamp(6) not null default current_timestamp(6) comment '创建时间',
 	`update_time` timestamp(6) not null default current_timestamp(6) on update current_timestamp(6) comment '更新时间',
@@ -102,7 +102,7 @@ create table `t_order_item`(
 
 
 -- ---------------------------------------------------------------
--- 表 5 / 5：支付明细
+-- 表 5 / 5：支付流水表
 -- ---------------------------------------------------------------
 create table `t_payment`(
 	`id` bigint not null auto_increment comment '主键ID',
@@ -112,7 +112,7 @@ create table `t_payment`(
 	`amount` decimal(10,2) not null comment '本次支付金额',
 	`channel` tinyint not null comment '支付渠道:0-银行卡,1-支付宝,2-微信',
 	`status` tinyint not null default 0 comment '支付状态:0-待支付,1-支付成功,2-支付失败,3-待退款,4-已退款,5-退款失败',
-	`pay_time` timestamp(6) default null comment '支付时间，未支付时为 NULL',
+	`pay_time` timestamp(6) default null comment '支付时间,未支付时为 NULL',
 	`deleted` tinyint not null default 0 comment '删除标记:0-未删除,1-已删除',
 	`create_time` timestamp(6) not null default current_timestamp(6) comment '创建时间',
 	`update_time` timestamp(6) not null default current_timestamp(6) on update current_timestamp(6) comment '更新时间',
