@@ -26,3 +26,8 @@ show index from t_product;
 -- 4) 表 3：订单
 desc t_order;
 show index from t_order;
+
+
+-- 5) 表 4：订单明细
+desc t_order_item;
+show index from t_order_item;

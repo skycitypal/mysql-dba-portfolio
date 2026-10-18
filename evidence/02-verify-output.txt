@@ -1,6 +1,7 @@
 Tables_in_eshop
 t_customer
 t_order
+t_order_item
 t_product
 Field	Type	Null	Key	Default	Extra
 id	bigint	NO	PRI	NULL	auto_increment
@@ -29,7 +30,7 @@ t_product	0	PRIMARY	1	id	A	0	NULL	NULL		BTREE			YES	NULL
 t_product	0	uk_product_no	1	product_no	A	0	NULL	NULL		BTREE			YES	NULL
 Field	Type	Null	Key	Default	Extra
 id	bigint	NO	PRI	NULL	auto_increment
-order_id	varchar(64)	NO	UNI	NULL	
+order_no	varchar(64)	NO	UNI	NULL	
 customer_id	bigint	NO	MUL	NULL	
 order_amount	decimal(10,2)	NO		NULL	
 status	tinyint	NO		0	
@@ -39,7 +40,25 @@ create_time	timestamp(6)	NO		CURRENT_TIMESTAMP(6)	DEFAULT_GENERATED
 update_time	timestamp(6)	NO		CURRENT_TIMESTAMP(6)	DEFAULT_GENERATED on update CURRENT_TIMESTAMP(6)
 Table	Non_unique	Key_name	Seq_in_index	Column_name	Collation	Cardinality	Sub_part	Packed	Null	Index_type	Comment	Index_comment	Visible	Expression
 t_order	0	PRIMARY	1	id	A	0	NULL	NULL		BTREE			YES	NULL
-t_order	0	uk_order_id	1	order_id	A	0	NULL	NULL		BTREE			YES	NULL
+t_order	0	uk_order_no	1	order_no	A	0	NULL	NULL		BTREE			YES	NULL
 t_order	1	idx_customer_deleted_ct	1	customer_id	A	0	NULL	NULL		BTREE			YES	NULL
 t_order	1	idx_customer_deleted_ct	2	deleted	A	0	NULL	NULL		BTREE			YES	NULL
 t_order	1	idx_customer_deleted_ct	3	create_time	A	0	NULL	NULL		BTREE			YES	NULL
+Field	Type	Null	Key	Default	Extra
+id	bigint	NO	PRI	NULL	auto_increment
+order_id	bigint	NO	MUL	NULL	
+product_id	bigint	NO		NULL	
+product_no	varchar(64)	NO		NULL	
+product_name	varchar(200)	NO		NULL	
+product_price	decimal(10,2)	NO		NULL	
+quantity	int	YES		NULL	
+deleted	tinyint	NO		0	
+create_time	timestamp(6)	NO		CURRENT_TIMESTAMP(6)	DEFAULT_GENERATED
+update_time	timestamp(6)	NO		CURRENT_TIMESTAMP(6)	DEFAULT_GENERATED on update CURRENT_TIMESTAMP(6)
+Table	Non_unique	Key_name	Seq_in_index	Column_name	Collation	Cardinality	Sub_part	Packed	Null	Index_type	Comment	Index_comment	Visible	Expression
+t_order_item	0	PRIMARY	1	id	A	0	NULL	NULL		BTREE			YES	NULL
+t_order_item	0	uk_order_product	1	order_id	A	0	NULL	NULL		BTREE			YES	NULL
+t_order_item	0	uk_order_product	2	product_id	A	0	NULL	NULL		BTREE			YES	NULL
+t_order_item	1	idx_order_deleted_ct	1	order_id	A	0	NULL	NULL		BTREE			YES	NULL
+t_order_item	1	idx_order_deleted_ct	2	deleted	A	0	NULL	NULL		BTREE			YES	NULL
+t_order_item	1	idx_order_deleted_ct	3	create_time	A	0	NULL	NULL		BTREE			YES	NULL
