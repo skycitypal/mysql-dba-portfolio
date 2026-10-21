@@ -1,8 +1,10 @@
 -- ============================================================
 -- 04_queries.sql  —  实3：业务查询与「有索引 / 没索引」对比
 --
--- 执行（不要加 -t：EXPLAIN ANALYZE 是树形输出，加了 -t 边框会错位）：
---   cmd /c "mysql -h 127.0.0.1 -P 3306 -u root -p --default-character-set=utf8mb4 < D:\mysql-dba-portfolio\sql\04_queries.sql > D:\mysql-dba-portfolio\evidence\04-queries-output.txt"
+-- 执行（树形输出要用 -r：--raw 关掉转义，换行才是真换行；
+--   不加 -r 的话整棵树会被压成一行、换行变成字面的 \n；
+--   也不要用 -t：树形文本带换行，加 -t 边框会算歪）：
+--   cmd /c "mysql -r -h 127.0.0.1 -P 3306 -u root -p --default-character-set=utf8mb4 < D:\mysql-dba-portfolio\sql\04_queries.sql > D:\mysql-dba-portfolio\evidence\04-queries-output.txt"
 --
 -- 实测结论（2026-10-22，原始输出见 evidence/04-queries-output.txt）：
 --   走索引   0.188 ms，读 20 行
