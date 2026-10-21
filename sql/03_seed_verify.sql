@@ -2,7 +2,12 @@
 -- 03_seed_verify.sql  —  造数之后的验证
 --
 -- 执行（先跑 03_seed_data.sql 灌数据，再跑这个）：
---   cmd /c "mysql -h 127.0.0.1 -P 3306 -u root -p --default-character-set=utf8mb4 < D:\mysql-dba-portfolio\sql\03_seed_verify.sql"
+--   cmd /c "mysql -t -h 127.0.0.1 -P 3306 -u root -p --default-character-set=utf8mb4 < D:\mysql-dba-portfolio\sql\03_seed_verify.sql > D:\mysql-dba-portfolio\evidence\03-seed-verify-output.txt"
+--
+-- 注意 `-t`：强制输出成带边框的表格。不加的话是制表符分隔，
+-- 列一多就错位，肉眼很难对上是哪一列。
+-- 例外：`EXPLAIN FORMAT=TREE` 的输出里带换行，加 `-t` 反而会把边框算歪，
+-- 那种查询不要加 `-t`（见 docs/课程/01-索引.md 的 U1 复盘）。
 -- ============================================================
 
 use `eshop`;

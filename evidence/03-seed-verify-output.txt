@@ -1,0 +1,47 @@
++--------------+-------+
+| tbl          | cnt   |
++--------------+-------+
+| t_customer   |  5000 |
+| t_product    |  1000 |
+| t_order      | 20000 |
+| t_order_item | 52771 |
+| t_payment    | 19157 |
++--------------+-------+
++--------------------+---------+----------+----------+
+| Table              | Op      | Msg_type | Msg_text |
++--------------------+---------+----------+----------+
+| eshop.t_customer   | analyze | status   | OK       |
+| eshop.t_product    | analyze | status   | OK       |
+| eshop.t_order      | analyze | status   | OK       |
+| eshop.t_order_item | analyze | status   | OK       |
+| eshop.t_payment    | analyze | status   | OK       |
++--------------------+---------+----------+----------+
++--------------+-------------------------+--------------+---------------------+-------------+
+| TABLE_NAME   | INDEX_NAME              | SEQ_IN_INDEX | COLUMN_NAME         | CARDINALITY |
++--------------+-------------------------+--------------+---------------------+-------------+
+| t_customer   | PRIMARY                 |            1 | id                  |        4856 |
+| t_customer   | uk_customer_login_name  |            1 | customer_login_name |        4856 |
+| t_order      | idx_customer_deleted_ct |            1 | customer_id         |        4405 |
+| t_order      | idx_customer_deleted_ct |            2 | deleted             |        4405 |
+| t_order      | idx_customer_deleted_ct |            3 | create_time         |       20000 |
+| t_order      | PRIMARY                 |            1 | id                  |       20049 |
+| t_order      | uk_order_no             |            1 | order_no            |       20049 |
+| t_order_item | idx_order_deleted_ct    |            1 | order_id            |       19594 |
+| t_order_item | idx_order_deleted_ct    |            2 | deleted             |       20205 |
+| t_order_item | idx_order_deleted_ct    |            3 | create_time         |       20277 |
+| t_order_item | PRIMARY                 |            1 | id                  |       52591 |
+| t_order_item | uk_order_product        |            1 | order_id            |       20287 |
+| t_order_item | uk_order_product        |            2 | product_id          |       52591 |
+| t_payment    | idx_order_deleted_ct    |            1 | order_id            |       18267 |
+| t_payment    | idx_order_deleted_ct    |            2 | deleted             |       18267 |
+| t_payment    | idx_order_deleted_ct    |            3 | create_time         |       18656 |
+| t_payment    | PRIMARY                 |            1 | id                  |       18656 |
+| t_payment    | uk_payment_no           |            1 | payment_no          |       17912 |
+| t_product    | PRIMARY                 |            1 | id                  |        1000 |
+| t_product    | uk_product_no           |            1 | product_no          |        1000 |
++--------------+-------------------------+--------------+---------------------+-------------+
++----------------------------+----------------------------+-------+
+| earliest                   | latest                     | cnt   |
++----------------------------+----------------------------+-------+
+| 2024-10-19 00:41:20.000000 | 2026-10-18 22:57:12.000000 | 20000 |
++----------------------------+----------------------------+-------+
